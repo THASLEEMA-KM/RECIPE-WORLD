@@ -41,7 +41,7 @@ function Favourites() {
                 <Card.Body>
                   <Card.Title className='text-center fs-2'>{item?.caption}</Card.Title>
                   <Card.Text className='text-center fs-4'><i className="fa-solid fa-stopwatch-20"></i>Prep.Time  : 
-                    {item?.time} Mins
+                    {item?.time}
                   </Card.Text>
                   <Card.Text>
                     {item?.description} 

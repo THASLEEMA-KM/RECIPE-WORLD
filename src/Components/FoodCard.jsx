@@ -214,7 +214,7 @@ function FoodCard({displaydata,setDeleteResponse}) {
                 onChange={(e)=>changeCaption(e)}
                 // onChange={(e)=>changeRecipe(setValues({...values,caption:e.target.value}))}
 
-                placeholder="name@example.com"
+                placeholder="Name of the food"
                 autoFocus
               />
             </Form.Group>
@@ -225,7 +225,7 @@ function FoodCard({displaydata,setDeleteResponse}) {
                 defaultValue={displaydata?.imgURL}
                 onChange={(e)=>changeImage(e)}
                 // onChange={(e)=>changeRecipe(setValues{...values,imgURL:e.target.value})}
-                placeholder="name@example.com"
+                placeholder="Image URL"
                 autoFocus
               />
             </Form.Group>
@@ -236,7 +236,7 @@ function FoodCard({displaydata,setDeleteResponse}) {
                 defaultValue={displaydata?.time}
                 onChange={(e)=>changeTime(e)}
                 // onChange={(e)=>changeRecipe({...values,time:e.target.value})}
-                placeholder="name@example.com"
+                placeholder="Preperation Time"
                 autoFocus
               />
             </Form.Group>
@@ -247,7 +247,7 @@ function FoodCard({displaydata,setDeleteResponse}) {
                 defaultValue={displaydata?.ingredients}
                 onChange={(e)=>changeIngreients(e)}
               // onChange={(e)=>changeRecipe({...values,ingredients:e.target.value})}
-                placeholder="name@example.com"
+                placeholder="Ingredients"
                 autoFocus
               />
             </Form.Group>
@@ -257,6 +257,7 @@ function FoodCard({displaydata,setDeleteResponse}) {
             >
               <Form.Label>Description</Form.Label>
               <Form.Control as="textarea" rows={3}
+              placeholder="Description "
               defaultValue={displaydata?.description}
               onChange={(e)=>changeDescription(e)}
               // onChange={(e)=>changeRecipe({...values,description:e.target.value})}
