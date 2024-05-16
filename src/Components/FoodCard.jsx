@@ -26,7 +26,13 @@ function FoodCard({ displaydata, setDeleteResponse }) {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  const handleShowing = () => setUpdateRecipe(true);
+  // const handleShowing = () => setUpdateRecipe(true);
+  const handleShowing = async (recipeId) =>{ 
+    
+    setUpdateRecipe(true);
+    const data = await getSingleRecipeAPI(recipeId)
+    console.log(data);
+  }
   const handleClosed = () => setUpdateRecipe(false);
 
   const handleChange = (e) => {
@@ -63,6 +69,7 @@ function FoodCard({ displaydata, setDeleteResponse }) {
         ingredients: '',
         description: ''
       });
+      console.log(result);
       handleClosed();
     } catch (error) {
       console.error(error);
@@ -82,7 +89,7 @@ function FoodCard({ displaydata, setDeleteResponse }) {
             <div className='d-flex justify-content-evenly'>
               <Button onClick={handleShow} variant="primary">View Recipe</Button>
               <Button variant="danger" onClick={() => handleRemoveRecipe(displaydata?.id)}>DELETE</Button>
-              <Button variant="warning" onClick={handleShowing}>EDIT</Button>
+              <Button variant="warning" onClick={()=>handleShowing(displaydata?.id)}>EDIT</Button>
             </div>
           </Card.Body>
         </Card>
