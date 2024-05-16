@@ -35,10 +35,6 @@ function FoodCard({ displaydata, setDeleteResponse }) {
   }
   const handleClosed = () => setUpdateRecipe(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setValues({ ...values, [name]: value });
-  };
 
   const handleAddFavourite = async () => {
     try {
@@ -57,6 +53,13 @@ function FoodCard({ displaydata, setDeleteResponse }) {
     } catch (error) {
       console.error(error);
     }
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues(prevState =>({ 
+      ...prevState, 
+      [name]: value 
+    }));
   };
 
   const handleUpdateRecipe = async () => {
