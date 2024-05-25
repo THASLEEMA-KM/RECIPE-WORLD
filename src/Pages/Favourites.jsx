@@ -8,7 +8,7 @@ function Favourites() {
     console.log(allFavourites);
     useEffect(()=>{
         getAllFavourites()
-    },[allFavourites])
+    },[])
 
         const getAllFavourites = async () =>
             {

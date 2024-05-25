@@ -9,17 +9,19 @@ import { Toaster, toast } from 'sonner';
 // import Update from './Update';
 
 function FoodCard({ displaydata, setDeleteResponse }) {
+  // modal states
   const [show, setShow] = useState(false);
   const [updateRecipe, setUpdateRecipe] = useState(false);
-  const [values, setValues] = useState({
-    id: '',
-    caption: '',
-    imgURL: '',
-    time: '',
-    ingredients: '',
-    description: ''
-  });
 
+  const [values, setValues] = useState({
+    id: displaydata.id ,
+      caption: displaydata.caption ,
+      imgURL: displaydata.imgURL,
+      time: displaydata.time ,
+      ingredients: displaydata.ingredients,
+      description: displaydata.description 
+  });
+// moddal func
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleClosed = () => setUpdateRecipe(false);
@@ -35,21 +37,22 @@ function FoodCard({ displaydata, setDeleteResponse }) {
     });
   }, [displaydata]);
 
-const [newDetails,setNewDetails] = useState({
-  id:values.id,
-  caption: values.caption,
-        imgURL: "",
-        time: "",
-        ingredients: "",
-        description: ""
-})
-console.log(newDetails);
+// const [newDetails,setNewDetails] = useState({
+//   id:values.id,
+//   caption: values.caption,
+//         imgURL: values.imgURL,
+//         time: values.time,
+//         ingredients: values.ingredients,
+//         description: values.description
+// })
+// console.log(newDetails);
 console.log(values);
 console.log(displaydata);
   const handleShowing = async (recipeId) => {
     setUpdateRecipe(true);
     try {
       const data = await getSingleRecipeAPI(recipeId);
+      console.log(data.data);
       setValues({
         id: recipeId,
         caption: data.caption,
@@ -64,13 +67,25 @@ console.log(displaydata);
     }
   };
 
+  // const handleInputChange = () => {
+  //   // const { name, value } = e.target;
+  //   // setValues(values => ({
+  //   //   ...values,
+  //   //   [name]: value
+  //   // }));
+  //   setValues({...values
+      
+  //   })
+  //   // console.log(e.target.value);
+  // };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setValues(prevState => ({
-      ...prevState,
-      [name]: value
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
     }));
   };
+  
 
   const handleAddFavourite = async () => {
     const { caption, imgURL, time, ingredients, description } = displaydata;
@@ -99,7 +114,7 @@ console.log(displaydata);
 
   const handleUpdateRecipe = async () => {
     try {
-      const result = await updateRecipeAPI(values);
+      const result = await updateRecipeAPI(values.id,values);
       if (result.status >= 200 && result.status < 300) {
         toast.success('Recipe updated successfully');
         handleClosed();
@@ -160,13 +175,13 @@ console.log(displaydata);
                   type="text"
                   name="caption"
                   value={values.caption}
-                  // onChange={handleInputChange}
-                  onChange={(e) =>
-                    setNewDetails({
-                      ...values,
-                      caption: e.target.value,
-                    })
-                  }
+                  onChange={handleInputChange}
+                  // onChange={(e) =>
+                  //   setValues({
+                  //     ...values,
+                  //     caption: e.target.value,
+                  //   })
+                  // }
                   placeholder="Name of the food"
                   autoFocus
                 />
@@ -176,14 +191,14 @@ console.log(displaydata);
                 <Form.Control
                   type="text"
                   name="imgURL"
-                  value={values.imgURL}
-                  // onChange={handleInputChange}
-                  onChange={(e) =>
-                    setNewDetails({
-                      ...values,
-                      imgURL: e.target.value,
-                    })
-                  }
+                  value={values?.imgURL}
+                  onChange={handleInputChange}
+                  // onChange={(e) =>
+                  //   setValues({
+                  //     ...values,
+                  //     imgURL: e.target.value,
+                  //   })
+                  // }
                   placeholder="Image URL"
                 />
               </Form.Group>
@@ -192,14 +207,14 @@ console.log(displaydata);
                 <Form.Control
                   type="text"
                   name="time"
-                  value={values.time}
-                  // onChange={handleInputChange}
-                  onChange={(e) =>
-                    setNewDetails({
-                      ...values,
-                      time: e.target.value,
-                    })
-                  }
+                  value={values?.time}
+                  onChange={handleInputChange}
+                  // onChange={(e) =>
+                  //   setValues({
+                  //     ...values,
+                  //     time: e.target.value,
+                  //   })
+                  // }
                   placeholder="Preparation Time"
                 />
               </Form.Group>
@@ -208,14 +223,14 @@ console.log(displaydata);
                 <Form.Control
                   type="text"
                   name="ingredients"
-                  value={values.ingredients}
-                  // onChange={handleInputChange}
-                  onChange={(e) =>
-                    setNewDetails({
-                      ...values,
-                      ingredients: e.target.value,
-                    })
-                  }
+                  value={values?.ingredients}
+                  onChange={handleInputChange}
+                  // onChange={(e) =>
+                  //   setValues({
+                  //     ...values,
+                  //     ingredients: e.target.value,
+                  //   })
+                  // }
                   placeholder="Ingredients"
                 />
               </Form.Group>
@@ -225,14 +240,14 @@ console.log(displaydata);
                   as="textarea"
                   name="description"
                   rows={3}
-                  value={values.description}
-                  // onChange={handleInputChange}
-                  onChange={(e) =>
-                    setNewDetails({
-                      ...values,
-                      description: e.target.value,
-                    })
-                  }
+                  value={values?.description}
+                  onChange={handleInputChange}
+                  // onChange={(e) =>
+                  //   setValues({
+                  //     ...values,
+                  //     description: e.target.value,
+                  //   })
+                  // }
                   placeholder="Description"
                 />
               </Form.Group>
