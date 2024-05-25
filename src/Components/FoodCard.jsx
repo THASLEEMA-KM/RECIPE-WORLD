@@ -5,8 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { addFavouriteAPI, removeRecipeAPI, updateRecipeAPI, getSingleRecipeAPI } from '../Services/allAPI';
 import { Toaster, toast } from 'sonner';
-import { Link } from 'react-router-dom';
-import Update from './Update';
+// import { Link } from 'react-router-dom';
+// import Update from './Update';
 
 function FoodCard({ displaydata, setDeleteResponse }) {
   const [show, setShow] = useState(false);
@@ -126,7 +126,7 @@ console.log(displaydata);
               <Button onClick={handleShow} variant="primary" className='btn'>View Recipe</Button>
               <Button variant="danger" onClick={() => handleRemoveRecipe(displaydata?.id)} className='btn ms-auto'>DELETE</Button>
               <Button variant="warning" onClick={() => handleShowing(displaydata?.id)} className='btn ms-auto'>EDIT</Button>
-              <button><Link to={'/update'}><Update displaydata={displaydata}/></Link></button>
+              {/* <button><Link to={'/update'}><Update displaydata={displaydata}/></Link></button> */}
             </div>
           </Card.Body>
         </Card>
