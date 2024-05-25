@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap'
 import { addRecipeAPI } from '../Services/allAPI'
 // import { ToastContainer, toast } from 'react-toastify';
 import { Toaster, toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 function Add({setAddRecipeResponse}) {
     
@@ -28,7 +28,7 @@ function Add({setAddRecipeResponse}) {
                 try 
                 {
                     const result = await addRecipeAPI(recipe)
-                    console.log(result);
+                    // console.log(result);
                     if (result.status>=200 && result.status<300) 
                     {
                         console.log(result.data);
@@ -52,7 +52,7 @@ function Add({setAddRecipeResponse}) {
                 } 
                 catch (error) 
                 {
-                        console.log(err);
+                        console.log(error);
                 }
                 // navigate('/')
             }
@@ -90,7 +90,7 @@ function Add({setAddRecipeResponse}) {
                 </Form>
         </div>
         <div className='text-center justify-content-around'>
-            <button onClick={()=>addRecipe()} className='btn btn-success'>Add</button>
+            <button onClick={addRecipe} className='btn btn-success'>Add</button>
             {/* <button onClick={()=>addRecipe()} className='btn btn-warning'>Update</button> */}
         </div>
 

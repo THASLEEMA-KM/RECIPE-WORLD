@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { Button } from 'react-bootstrap';
-import logoimg from '../assets/logo.png'
+import logoimg from '../assets/logo1.png'
 
 function Header() {
   const renderTooltipOne = (props) => (
@@ -26,11 +26,11 @@ function Header() {
     </Tooltip>
   );
   return (
-    <div className='headerdiv '>
-        <Navbar expand="lg" >
+    <div>
+        <Navbar expand="lg" className='bg-warning'>
             <Container >
                <Link to={'/'} style={{textDecoration:'none'}} className='fw-bolder' >
-                    <Navbar.Brand style={{color:'white'}} className='fs-2'><img
+                    <Navbar.Brand style={{color:'black'}} className='fs-2 '><img
                   alt=""
                   src={logoimg}
                   width="80"

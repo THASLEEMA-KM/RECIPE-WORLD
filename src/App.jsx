@@ -9,6 +9,7 @@ import Landing from './Pages/Landing'
 import Favourites from './Pages/Favourites'
 import { useEffect, useState } from 'react'
 import Loading from './Components/Loading/Loading'
+import Update from './Components/Update'
 
 
 function App() {
@@ -40,6 +41,7 @@ useEffect(()=>{
         <Route element={<Landing addRecipeResponse={addRecipeResponse} />} path='/'></Route>
         <Route element={<Home/>} path='/home'></Route>
         <Route element={<Add setAddRecipeResponse={setAddRecipeResponse}/>} path='/add'></Route>
+        <Route element={<Update />} path='/update'></Route>
         <Route element={<Favourites />} path='/favourites'></Route>
        </Routes>
        <Footer/>

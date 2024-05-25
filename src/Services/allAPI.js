@@ -43,7 +43,14 @@ export const getSingleRecipeAPI = async (recipeId) =>
     }
     
     // updating recipe called by foodcard Component
-export const updateRecipeAPI = async (recipeId,recipeDeatils) =>
-    {
-        return await commonAPI("PUT",`${SERVER_URL}/allRecipies/${recipeId}`,recipeDeatils)
-    }
+// export const updateRecipeAPI = async (recipeId,recipeDeatils) =>
+//     {
+//         return await commonAPI("PUT",`${SERVER_URL}/allRecipies/${recipeId}`,recipeDeatils)
+//     }
+
+
+    export const updateRecipeAPI = async (recipeId,recipeDeatils) =>
+        {
+            return await commonAPI("PUT",`${SERVER_URL}/allRecipies/${recipeId}`,recipeDeatils)
+        }
+    

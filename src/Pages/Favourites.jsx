@@ -8,7 +8,7 @@ function Favourites() {
     console.log(allFavourites);
     useEffect(()=>{
         getAllFavourites()
-    },[])
+    },[allFavourites])
 
         const getAllFavourites = async () =>
             {
@@ -33,7 +33,7 @@ function Favourites() {
         <h1 className=' text-center fw-bolder pt-5 text-warning'>Favourites</h1>
         <Row className='container-fluid' style={{minHeight:'100vh'}}>
         {
-        allFavourites.length>0?
+        allFavourites?.length>0?
         allFavourites?.map((item)=>(
         <Col key={item?.id} className='mb-4' sm={12} md={6} lg={4}>
                 <Card  style={{ width: 'auto' }}>
