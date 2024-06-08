@@ -112,12 +112,12 @@ console.log(displaydata);
     <>
     
       <div className='container-fluid justify-content-between align-items-center pt-5 ps-4'>
-        <Card style={{ width: '18rem' }} className='bg-black'>
-          <Card.Img variant="top" height={'200px'} src={displaydata?.imgURL} />
-          <Card.Body>
+        <Card style={{ width: '18rem' }} className='rounded shadow-5 bg-black'>
+          <Card.Img variant="top" height={'200px'} src={displaydata?.imgURL} className='rounded-5'/>
+          <Card.Body className='bg-black rounded-5'>
             <Card.Title className='text-center text-white fs-2'>{displaydata?.caption}</Card.Title>
-            <Card.Text className='text-center text-white fs-4'>
-              <i className="fa-solid fa-stopwatch-20 text-white"></i>Prep.Time: {displaydata?.time} Minutes
+            <Card.Text className='text-center text-white fs-5'>
+              <i className="fa-solid fa-stopwatch me-2 text-black"></i>Prep.Time: {displaydata?.time} Minutes
             </Card.Text>
             <div className='d-flex justify-content-center'>
               <button  onClick={handleShow}  className='btn'><i className="fa-solid fa-eye text-info"></i> </button>
@@ -132,7 +132,7 @@ console.log(displaydata);
             <Modal.Title><h1 className='text-info'>{displaydata?.caption}-Recipe</h1></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Modal.Title><h3 className='text-warning'><i className="fa-solid fa-stopwatch-20"></i>Prep.Time: {displaydata?.time} Mins</h3></Modal.Title>
+            <Modal.Title><h3 className='text-warning'><i className="fa-solid fa-stopwatch-20"></i>Prep.Time: {displaydata?.time} Minutes</h3></Modal.Title>
             <h3 className='text-success'>Ingredients</h3>
             <p>{displaydata?.ingredients}</p>
             <h3>Description</h3>
