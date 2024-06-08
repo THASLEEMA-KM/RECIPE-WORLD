@@ -5,9 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { addFavouriteAPI, removeRecipeAPI, updateRecipeAPI, getSingleRecipeAPI } from '../Services/allAPI';
 import { Toaster, toast } from 'sonner';
-import Add from './Add';
-// import { Link } from 'react-router-dom';
-// import Update from './Update';
+
 
 function FoodCard({ displaydata, setDeleteResponse }) {
   // modal states
@@ -38,15 +36,7 @@ function FoodCard({ displaydata, setDeleteResponse }) {
     });
   }, []);
 
-// const [newDetails,setNewDetails] = useState({
-//   id:values.id,
-//   caption: values.caption,
-//         imgURL: values.imgURL,
-//         time: values.time,
-//         ingredients: values.ingredients,
-//         description: values.description
-// })
-// console.log(newDetails);
+
 console.log(values);
 console.log(displaydata);
   const handleShowing = async (recipeId) => {
@@ -54,31 +44,21 @@ console.log(displaydata);
     try {
       const data = await getSingleRecipeAPI(recipeId);
       console.log(data.data);
-      setValues({
-        id: recipeId,
-        caption: data.caption,
-        imgURL: data.imgURL,
-        time: data.time,
-        ingredients: data.ingredients,
-        description: data.description
-      });
+      setValues((prevValues) => ({
+        ...prevValues,
+        caption: data.caption || prevValues.caption,
+        imgURL: data.imgURL || prevValues.imgURL,
+        time: data.time || prevValues.time,
+        ingredients: data.ingredients || prevValues.ingredients,
+        description: data.description || prevValues.description,
+      }));
     } catch (error) {
       console.error('Error fetching recipe:', error);
       toast.error('Failed to fetch recipe details');
     }
   };
 
-  // const handleInputChange = () => {
-  //   // const { name, value } = e.target;
-  //   // setValues(values => ({
-  //   //   ...values,
-  //   //   [name]: value
-  //   // }));
-  //   setValues({...values
-      
-  //   })
-  //   // console.log(e.target.value);
-  // };
+ 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setValues((prevValues) => ({
@@ -130,20 +110,19 @@ console.log(displaydata);
 
   return (
     <>
+    
       <div className='container-fluid justify-content-between align-items-center pt-5 ps-4'>
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" height={'200px'} src={displaydata?.imgURL} />
           <Card.Body>
             <Card.Title className='text-center fs-2'>{displaydata?.caption}</Card.Title>
             <Card.Text className='text-center fs-4'>
-              <i className="fa-solid fa-stopwatch-20"></i>Prep.Time: {displaydata?.time}
+              <i className="fa-solid fa-stopwatch-20"></i>Prep.Time: {displaydata?.time} Minutes
             </Card.Text>
             <div className='d-flex justify-content-center'>
               <button  onClick={handleShow}  className='btn'><i className="fa-solid fa-eye text-info"></i> </button>
               <button  onClick={() => handleRemoveRecipe(displaydata?.id)} className='btn  ms-3'> <i className="fa-solid fa-trash text-danger"></i> </button>
               <button  onClick={() => handleShowing(displaydata?.id)} className='btn ms-3 text-warninf'> <i className="fa-solid fa-pen text-warning"></i> </button>
-              {/* <button><Link to={'/update'}><Update displaydata={displaydata}/></Link></button> */}
-               {/* <button><Link to={`/${values?.id}/update`} values={values}>Edit</Link></button> */}
             </div>
           </Card.Body>
         </Card>
@@ -178,12 +157,7 @@ console.log(displaydata);
                   name="caption"
                   value={values.caption}
                   onChange={handleInputChange}
-                  // onChange={(e) =>
-                  //   setValues({
-                  //     ...values,
-                  //     caption: e.target.value,
-                  //   })
-                  // }
+               
                   placeholder="Name of the food"
                   autoFocus
                 />
@@ -195,12 +169,7 @@ console.log(displaydata);
                   name="imgURL"
                   value={values?.imgURL}
                   onChange={handleInputChange}
-                  // onChange={(e) =>
-                  //   setValues({
-                  //     ...values,
-                  //     imgURL: e.target.value,
-                  //   })
-                  // }
+              
                   placeholder="Image URL"
                 />
               </Form.Group>
@@ -211,12 +180,8 @@ console.log(displaydata);
                   name="time"
                   value={values?.time}
                   onChange={handleInputChange}
-                  // onChange={(e) =>
-                  //   setValues({
-                  //     ...values,
-                  //     time: e.target.value,
-                  //   })
-                  // }
+                  
+                  
                   placeholder="Preparation Time"
                 />
               </Form.Group>
@@ -227,12 +192,7 @@ console.log(displaydata);
                   name="ingredients"
                   value={values?.ingredients}
                   onChange={handleInputChange}
-                  // onChange={(e) =>
-                  //   setValues({
-                  //     ...values,
-                  //     ingredients: e.target.value,
-                  //   })
-                  // }
+               
                   placeholder="Ingredients"
                 />
               </Form.Group>
@@ -244,12 +204,7 @@ console.log(displaydata);
                   rows={3}
                   value={values ?.description}
                   onChange={handleInputChange}
-                  // onChange={(e) =>
-                  //   setValues({
-                  //     ...values,
-                  //     description: e.target.value,
-                  //   })
-                  // }
+                 
                   placeholder="Description"
                 />
               </Form.Group>

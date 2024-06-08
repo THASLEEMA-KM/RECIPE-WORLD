@@ -29,7 +29,7 @@ const getAllRecipies = async () =>
   }
   return (
 <>
-      <div className='pt-5 text-center align-items-center justify-content-center ' style={{border:'1px', borderColor:'black', borderRadius:'50%'}}><h1 className=" text-danger fw-bolder ">All Recipies</h1></div>
+      <div className=' text-center align-items-center justify-content-center ' style={{border:'1px', borderColor:'black', borderRadius:'50%'}}><h1 className=" text-danger fw-bolder ">All Recipies</h1></div>
       <div className='d-flex flex-column justify-content-between  w-100'>
       <Row >
           {
