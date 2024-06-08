@@ -112,12 +112,12 @@ console.log(displaydata);
     <>
     
       <div className='container-fluid justify-content-between align-items-center pt-5 ps-4'>
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem' }} className='bg-black'>
           <Card.Img variant="top" height={'200px'} src={displaydata?.imgURL} />
           <Card.Body>
-            <Card.Title className='text-center fs-2'>{displaydata?.caption}</Card.Title>
-            <Card.Text className='text-center fs-4'>
-              <i className="fa-solid fa-stopwatch-20"></i>Prep.Time: {displaydata?.time} Minutes
+            <Card.Title className='text-center text-white fs-2'>{displaydata?.caption}</Card.Title>
+            <Card.Text className='text-center text-white fs-4'>
+              <i className="fa-solid fa-stopwatch-20 text-white"></i>Prep.Time: {displaydata?.time} Minutes
             </Card.Text>
             <div className='d-flex justify-content-center'>
               <button  onClick={handleShow}  className='btn'><i className="fa-solid fa-eye text-info"></i> </button>
