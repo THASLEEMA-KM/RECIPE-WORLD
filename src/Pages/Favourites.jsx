@@ -30,7 +30,7 @@ function Favourites() {
             }
   return (
     <>
-        <h1 className=' text-center fw-bolder pt-5 text-warning'>Favourites</h1>
+        <h1 className=' text-center fw-bolder pt-5 text-warning'>Your Favourites</h1>
         <Row className='container-fluid' style={{minHeight:'100vh'}}>
         {
         allFavourites?.length>0?
@@ -40,8 +40,8 @@ function Favourites() {
                 <Card.Img variant="top" height={'200px'} src={item?.imgURL} />
                 <Card.Body>
                   <Card.Title className='text-center text-white fs-2'>{item?.caption}</Card.Title>
-                  <Card.Text className='text-center fs-4 text-white'><i className="fa-solid fa-stopwatch-20"></i>Prep.Time  : 
-                    {item?.time}
+                  <Card.Text className='text-center fs-4 text-white'><i className="fa-solid fa-stopwatch text-white me-2"></i>Prep.Time  : 
+                    {item?.time} Minutes
                   </Card.Text>
                   <Card.Text className='text-white'>
                     {item?.description} 

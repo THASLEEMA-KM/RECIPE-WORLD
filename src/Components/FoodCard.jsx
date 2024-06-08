@@ -132,7 +132,7 @@ console.log(displaydata);
             <Modal.Title><h1 className='text-info'>{displaydata?.caption}-Recipe</h1></Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Modal.Title><h3 className='text-warning'><i className="fa-solid fa-stopwatch-20"></i>Prep.Time: {displaydata?.time} Minutes</h3></Modal.Title>
+            <Modal.Title><h3 className='text-warning'><i className="fa-solid fa-stopwatch text-white"></i>Prep.Time: {displaydata?.time} Minutes</h3></Modal.Title>
             <h3 className='text-success'>Ingredients</h3>
             <p>{displaydata?.ingredients}</p>
             <h3>Description</h3>
