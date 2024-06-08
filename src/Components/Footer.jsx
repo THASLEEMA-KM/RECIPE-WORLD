@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div  className='headerdiv container-fluid w-100 mt-5'>
+    <div  className='headerdiv container-fluid w-100 mt-5 bg-black'>
         
 
 

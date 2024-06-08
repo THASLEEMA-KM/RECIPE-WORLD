@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { addFavouriteAPI, removeRecipeAPI, updateRecipeAPI, getSingleRecipeAPI } from '../Services/allAPI';
 import { Toaster, toast } from 'sonner';
+import Add from './Add';
 // import { Link } from 'react-router-dom';
 // import Update from './Update';
 
@@ -35,7 +36,7 @@ function FoodCard({ displaydata, setDeleteResponse }) {
       ingredients: displaydata.ingredients,
       description: displaydata.description 
     });
-  }, [displaydata]);
+  }, []);
 
 // const [newDetails,setNewDetails] = useState({
 //   id:values.id,
@@ -137,11 +138,12 @@ console.log(displaydata);
             <Card.Text className='text-center fs-4'>
               <i className="fa-solid fa-stopwatch-20"></i>Prep.Time: {displaydata?.time}
             </Card.Text>
-            <div className='d-flex justify-content-evenly'>
-              <Button onClick={handleShow} variant="primary" className='btn'>View Recipe</Button>
-              <Button variant="danger" onClick={() => handleRemoveRecipe(displaydata?.id)} className='btn ms-auto'>DELETE</Button>
-              <Button variant="warning" onClick={() => handleShowing(displaydata?.id)} className='btn ms-auto'>EDIT</Button>
+            <div className='d-flex justify-content-center'>
+              <button  onClick={handleShow}  className='btn'><i className="fa-solid fa-eye text-info"></i> </button>
+              <button  onClick={() => handleRemoveRecipe(displaydata?.id)} className='btn  ms-3'> <i className="fa-solid fa-trash text-danger"></i> </button>
+              <button  onClick={() => handleShowing(displaydata?.id)} className='btn ms-3 text-warninf'> <i className="fa-solid fa-pen text-warning"></i> </button>
               {/* <button><Link to={'/update'}><Update displaydata={displaydata}/></Link></button> */}
+               {/* <button><Link to={`/${values?.id}/update`} values={values}>Edit</Link></button> */}
             </div>
           </Card.Body>
         </Card>
@@ -240,7 +242,7 @@ console.log(displaydata);
                   as="textarea"
                   name="description"
                   rows={3}
-                  value={values?.description}
+                  value={values ?.description}
                   onChange={handleInputChange}
                   // onChange={(e) =>
                   //   setValues({

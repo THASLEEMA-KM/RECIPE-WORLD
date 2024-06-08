@@ -41,7 +41,9 @@ useEffect(()=>{
         <Route element={<Landing addRecipeResponse={addRecipeResponse} />} path='/'></Route>
         <Route element={<Home/>} path='/home'></Route>
         <Route element={<Add setAddRecipeResponse={setAddRecipeResponse}/>} path='/add'></Route>
-        <Route element={<Update />} path='/update'></Route>
+        <Route element={<Add insideUpdate={true}/>} path='/:id/update'></Route>
+
+        {/* <Route element={<Update />} path='/update'></Route> */}
         <Route element={<Favourites />} path='/favourites'></Route>
        </Routes>
        <Footer/>

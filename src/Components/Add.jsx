@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Form } from 'react-bootstrap'
-import { addRecipeAPI } from '../Services/allAPI'
+import { addRecipeAPI, updateRecipeAPI } from '../Services/allAPI'
 // import { ToastContainer, toast } from 'react-toastify';
 import { Toaster, toast } from 'sonner'
 // import { useNavigate } from 'react-router-dom'
 
-function Add({setAddRecipeResponse}) {
+function Add({setAddRecipeResponse,insideUpdate,displaydata}) {
     
     // const navigate = useNavigate()
     const [recipe,setRecipe] = useState(
@@ -17,6 +17,22 @@ function Add({setAddRecipeResponse}) {
           description:''
         }
       )
+
+      const [updateRecipe,setUpdateRecipe] = useState(
+        {
+            
+          caption:displaydata.caption,
+          imgURL:displaydata.imgURL,
+          time:displaydata.time,
+          ingredients:displaydata.ingredients,
+          description:displaydata.description
+        }
+      )
+      console.log(updateRecipe);
+const handleUpdate =()=>
+    {
+        setUpdateRecipe('')
+    }
       const addRecipe = async ()=>
         {
             console.log("inside add function");
@@ -65,7 +81,14 @@ function Add({setAddRecipeResponse}) {
   return (
     <>
         <div className='container-fluid w-50 add'>
-            <h1 className='text-center pt-5 fw-bolder text-success'>ADD YOUR RECIPE</h1>
+            {   
+                insideUpdate ?
+                <h1 className='text-center pt-5 fw-bolder text-success'>UPDATE YOUR RECIPE</h1>
+                :
+                <h1 className='text-center pt-5 fw-bolder text-success'>ADD YOUR RECIPE</h1>
+            }
+            { 
+                insideUpdate ?
                 <Form >
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Image</Form.Label>
@@ -88,10 +111,54 @@ function Add({setAddRecipeResponse}) {
                     <Form.Control onChange={e=>setRecipe({...recipe,description:e.target.value})} as="textarea" rows={3} />
                 </Form.Group>
                 </Form>
+                :
+                <Form >
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Image</Form.Label>
+                    <Form.Control 
+                    value={updateRecipe?.imgURL}
+                    onChange={handleUpdate} 
+                    type="text" placeholder="Image url" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control  
+                    value={updateRecipe?.caption}
+                    onChange={handleUpdate} 
+                    type="text" placeholder="Food name here" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Time</Form.Label>
+                    <Form.Control 
+                    value={updateRecipe?.time}
+                    onChange={handleUpdate} 
+                    type="email" placeholder="Duration for cooking" />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Ingredients</Form.Label>
+                    <Form.Control 
+                    value={updateRecipe?.ingredients}
+                    onChange={handleUpdate} 
+                    as="textarea" rows={3} />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control 
+                    value={updateRecipe?.description}
+                    onChange={handleUpdate} 
+                    as="textarea" rows={3} />
+                </Form.Group>
+                </Form>
+            }
         </div>
         <div className='text-center justify-content-around'>
-            <button onClick={addRecipe} className='btn btn-success'>Add</button>
-            {/* <button onClick={()=>addRecipe()} className='btn btn-warning'>Update</button> */}
+            
+            {
+                insideUpdate ?
+                <button onClick={()=>addRecipe()} className='btn btn-warning '>Update</button>
+                :
+                <button onClick={addRecipe} className='btn btn-success'>Add</button>
+            }
         </div>
 
         <Toaster position="top-center" richColors  />
