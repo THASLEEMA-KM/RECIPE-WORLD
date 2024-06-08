@@ -6,13 +6,14 @@ import { getAllRecipeAPI } from '../Services/allAPI'
 
 function View({addRecipeResponse,setAddFavourites}) {
   const [deleteResponse,setDeleteResponse] = useState("")
+  const [updateResponse,setUpdateResponse] = useState("")
 const [allRecipies,setAllRecipies] = useState([])
 console.log(allRecipies);
 
 useEffect(()=>{
   getAllRecipies()
 
-},[addRecipeResponse,deleteResponse])
+},[addRecipeResponse,deleteResponse,updateResponse])
 
 const getAllRecipies = async () =>
   {
@@ -36,7 +37,7 @@ const getAllRecipies = async () =>
             allRecipies?.length>0?
             allRecipies?.map(recipies=>(
               <Col key={recipies?.id} className='mb-4' sm={12} md={6} lg={4} xl={3}>
-              <Foodcard displaydata={recipies} setAddFavourites={setAddFavourites} setDeleteResponse={setDeleteResponse}/>
+              <Foodcard displaydata={recipies} setAddFavourites={setAddFavourites} setDeleteResponse={setDeleteResponse} setUpdateResponse={setUpdateResponse} />
           </Col>
             ))
             :
