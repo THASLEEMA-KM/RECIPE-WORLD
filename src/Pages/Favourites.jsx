@@ -36,14 +36,14 @@ function Favourites() {
         allFavourites?.length>0?
         allFavourites?.map((item)=>(
         <Col key={item?.id} className='mb-4' sm={12} md={6} lg={4}>
-                <Card  style={{ width: 'auto' }}>
+                <Card  style={{ width: 'auto' }} className='bg-black'>
                 <Card.Img variant="top" height={'200px'} src={item?.imgURL} />
                 <Card.Body>
-                  <Card.Title className='text-center fs-2'>{item?.caption}</Card.Title>
-                  <Card.Text className='text-center fs-4'><i className="fa-solid fa-stopwatch-20"></i>Prep.Time  : 
+                  <Card.Title className='text-center text-white fs-2'>{item?.caption}</Card.Title>
+                  <Card.Text className='text-center fs-4 text-white'><i className="fa-solid fa-stopwatch-20"></i>Prep.Time  : 
                     {item?.time}
                   </Card.Text>
-                  <Card.Text>
+                  <Card.Text className='text-white'>
                     {item?.description} 
                   </Card.Text>
                   <div className='text-center justify-content-center'>
