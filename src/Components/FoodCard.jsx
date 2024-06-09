@@ -7,7 +7,7 @@ import { addFavouriteAPI, removeRecipeAPI, updateRecipeAPI, getSingleRecipeAPI }
 import { Toaster, toast } from 'sonner';
 
 
-function FoodCard({ displaydata, setDeleteResponse }) {
+function FoodCard({ displaydata, setDeleteResponse, setUpdateResponse }) {
   // modal states
   const [show, setShow] = useState(false);
   const [updateRecipe, setUpdateRecipe] = useState(false);
@@ -96,6 +96,7 @@ console.log(displaydata);
   const handleUpdateRecipe = async () => {
     try {
       const result = await updateRecipeAPI(values.id,values);
+      setUpdateResponse(result.data);
       if (result.status >= 200 && result.status < 300) {
         toast.success('Recipe updated successfully');
         handleClosed();
