@@ -118,7 +118,7 @@ console.log(displaydata);
           <Card.Body className='bg-black rounded-5'>
             <Card.Title className='text-center text-white fs-2'>{displaydata?.caption}</Card.Title>
             <Card.Text className='text-center text-white fs-5'>
-              <i className="fa-solid fa-stopwatch me-2 text-black"></i>Prep.Time: {displaydata?.time} Minutes
+              <i className="fa-solid fa-stopwatch me-2 text-white"></i>Prep.Time: {displaydata?.time} Minutes
             </Card.Text>
             <div className='d-flex justify-content-center'>
               <button  onClick={handleShow}  className='btn'><i className="fa-solid fa-eye text-info"></i> </button>
